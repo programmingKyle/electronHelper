@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>electronHelper</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+  <body>
+    <div class="base-grid">
+      <div class="variable-convert-grid">
+        <div style="display: flex; justify-content: center;">
+          <textarea name="htmlText" id="htmlText" cols="30" rows="10" placeholder="Paste HTML Here"></textarea>
+        </div>
+        <div style="display: grid; grid-gap: 10px; grid-template-columns: 1fr 1fr 1fr; padding: 0px 10px;">
+          <button id="pasteConvert">Paste & Convert</button>
+          <button id="convertButton">Convert</button>
+          <button id="copyAllButton">Copy All</button>  
+        </div>
+        <div style="overflow: auto;" class="container">
+          <div id="output" class="output-grid" style="width: 100%;" style="margin: 10px;">
+          </div>   
+        </div>
+      </div>
+      <div class="quick-copy-grid">
+        <div class="preload-input-grid container">
+          <h4 style="grid-column: span 2;">IPC Copy</h4>
+          <div style="display: grid; grid-template-columns: auto 1fr;">
+            <input id="requireDataCheckbox" type="checkbox">
+            <h5>Require Data</h5>
+          </div>
+          <input id="ipcNameInput" type="text" placeholder="variableName" style="grid-column: span 2;">
+          <button id="copyPreloadLineButton">Preload</button>
+          <button id="copyIpcMainButton">ipcMain</button>
+        </div>
+        <div class="container">
+          <div class="quick-copy-button-grid">
+            <h4>Quick Copy</h4>
+            <button id="contentLoadedButton">DOMContentLoaded</button>
+            <button id="addEventListenerButton">AddEventListener</button>
+            <button id="preloadButton">Basic Preload</button>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="convert.js"></script>
+</html>
