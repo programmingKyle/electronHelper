@@ -86,6 +86,11 @@ ipcMain.handle('quick-copy-select', async (req, data) => {
         console.log('Execute code here'); \n} catch (error) {
         console.error(error);\n}`
       break;
+    case 'Promise':
+      content = `return new Promise((resolve, reject) => {
+
+      });`;
+      break;
   }
   clipboard.writeText(content);
 });

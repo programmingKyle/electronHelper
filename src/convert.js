@@ -9,6 +9,7 @@ const addEventListenerButton_el = document.getElementById('addEventListenerButto
 const preloadButton_el = document.getElementById('preloadButton');
 const timeoutButton_el = document.getElementById('timeoutButton');
 const tryCatchButton_el = document.getElementById('tryCatchButton');
+const promiseButton_el = document.getElementById('promiseButton');
 
 const requireDataCheckbox_el = document.getElementById('requireDataCheckbox');
 const ipcNameInput_el = document.getElementById('ipcNameInput');
@@ -147,4 +148,9 @@ timeoutButton_el.addEventListener('click', async () => {
 tryCatchButton_el.addEventListener('click', async () => {
     await api.quickCopySelect('TryCatch');
     confirmButtonClick(tryCatchButton_el);
+});
+
+promiseButton_el.addEventListener('click', async () => {
+    await api.quickCopySelect('Promise');
+    confirmButtonClick(promiseButton_el);
 });
