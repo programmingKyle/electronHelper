@@ -80,7 +80,12 @@ ipcMain.handle('quick-copy-select', async (req, data) => {
     case "SetTimeout":
       content = `setTimeout(() => {
         console.log('Execute code here');\n}, 1000);`;
-    break;
+      break;
+    case "TryCatch":
+      content = `try {
+        console.log('Execute code here'); \n} catch (error) {
+        console.error(error);\n}`
+      break;
   }
   clipboard.writeText(content);
 });

@@ -8,6 +8,7 @@ const contentLoadedButton_el = document.getElementById('contentLoadedButton');
 const addEventListenerButton_el = document.getElementById('addEventListenerButton');
 const preloadButton_el = document.getElementById('preloadButton');
 const timeoutButton_el = document.getElementById('timeoutButton');
+const tryCatchButton_el = document.getElementById('tryCatchButton');
 
 const requireDataCheckbox_el = document.getElementById('requireDataCheckbox');
 const ipcNameInput_el = document.getElementById('ipcNameInput');
@@ -141,4 +142,9 @@ copyIpcMainButton_el.addEventListener('click', async () => {
 timeoutButton_el.addEventListener('click', async () => {
     await api.quickCopySelect('SetTimeout');
     confirmButtonClick(timeoutButton_el);
+});
+
+tryCatchButton_el.addEventListener('click', async () => {
+    await api.quickCopySelect('TryCatch');
+    confirmButtonClick(tryCatchButton_el);
 });
