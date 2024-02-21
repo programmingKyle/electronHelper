@@ -11,6 +11,7 @@ const timeoutButton_el = document.getElementById('timeoutButton');
 const tryCatchButton_el = document.getElementById('tryCatchButton');
 const promiseButton_el = document.getElementById('promiseButton');
 const fileFolderButton_el = document.getElementById('fileFolderButton');
+const clipboardButton_el = document.getElementById('clipboardButton');
 
 const requireDataCheckbox_el = document.getElementById('requireDataCheckbox');
 const ipcNameInput_el = document.getElementById('ipcNameInput');
@@ -159,4 +160,9 @@ promiseButton_el.addEventListener('click', async () => {
 fileFolderButton_el.addEventListener('click', async () => {
     await api.quickCopySelect('OpenFileFolder');
     confirmButtonClick(fileFolderButton_el);
+});
+
+clipboardButton_el.addEventListener('click', async () => {
+    await api.quickCopySelect('Clipboard');
+    confirmButtonClick(clipboardButton_el);
 });

@@ -107,6 +107,13 @@ ipcMain.handle('quick-copy-select', async (req, data) => {
       });
       `
       break;
+    case 'Clipboard':
+      content = `
+      const { clipboard } = require('electron');\n
+      clipboard.writeText('Text to copy');\n
+      const clipboardText = clipboard.readText();
+      `
+      break;
   }
   clipboard.writeText(content);
 });
