@@ -22,7 +22,7 @@ textarea {
 }
 
 input {
-  padding: 10px;
+  padding: 4px 10px;
   background-color: rgb(31, 31, 31);
   color: rgb(0, 141, 197);
   outline: none; /* Remove the focus outline */
@@ -33,7 +33,7 @@ input {
 .base-grid {
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 35%;
   grid-gap: 10px;
   overflow: hidden;
 }
@@ -48,7 +48,7 @@ input {
 
 .quick-copy-grid {
   display: grid;     
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   grid-gap: 10px;
   margin: 10px 10px 10px 0px;
   overflow: hidden;
@@ -62,14 +62,18 @@ input {
 .preload-input-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
+  grid-gap: 2px;
+}
+
+.preload-input-grid button {
+  padding: 5px 0px;
 }
 
 button {
   background-color: rgb(0, 102, 143);
   border-style: none;
   color: white;
-  height: 40px;
+  padding: 10px 0px;
   border-radius: 10px;
 }
 
@@ -98,7 +102,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .container {
   background-color: #2e2e2e; 
-  padding: 10px; 
+  padding: 5px 10px; 
   border-radius: 10px;
 }
 
@@ -107,6 +111,22 @@ h1,h2,h3,h4,h5,h6 {
   grid-template-columns: 1fr 20%;
   grid-gap: 10px;
 }
+
+.callback-grid {
+  display: grid;
+  grid-gap: 2px;
+}
+
+.callback-button-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2px;
+}
+
+.callback-button-grid button {
+  padding: 5px 0px;
+}
+
 
 ::-webkit-scrollbar {
   width: 6px;
