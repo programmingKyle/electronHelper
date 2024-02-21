@@ -77,6 +77,10 @@ ipcMain.handle('quick-copy-select', async (req, data) => {
     case "AddEventListener":
       content = `button.addEventListener('click', () => {\n\n})`;
       break;
+    case "SetTimeout":
+      content = `setTimeout(() => {
+        console.log('Execute code here');\n}, 1000);`;
+    break;
   }
   clipboard.writeText(content);
 });

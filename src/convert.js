@@ -7,6 +7,7 @@ const pasteConvert_el = document.getElementById('pasteConvert');
 const contentLoadedButton_el = document.getElementById('contentLoadedButton');
 const addEventListenerButton_el = document.getElementById('addEventListenerButton');
 const preloadButton_el = document.getElementById('preloadButton');
+const timeoutButton_el = document.getElementById('timeoutButton');
 
 const requireDataCheckbox_el = document.getElementById('requireDataCheckbox');
 const ipcNameInput_el = document.getElementById('ipcNameInput');
@@ -136,3 +137,8 @@ copyIpcMainButton_el.addEventListener('click', async () => {
     await api.ipcQuickCopySelect({request: 'ipcMain', needData: requireDataCheckbox_el.checked, ipcName: ipcNameInput_el.value});
     confirmButtonClick(copyIpcMainButton_el);
 })
+
+timeoutButton_el.addEventListener('click', async () => {
+    await api.quickCopySelect('SetTimeout');
+    confirmButtonClick(timeoutButton_el);
+});
