@@ -91,6 +91,22 @@ ipcMain.handle('quick-copy-select', async (req, data) => {
 
       });`;
       break;
+    case 'OpenFileFolder':
+      content = `
+      const { dialog } = require('electron');
+
+      dialog.showOpenDialog({ properties: ['openFile', 'openDirectory'] })
+        .then((result) => {
+          if (!result.canceled) {
+            const filePath = result.filePaths[0];
+            // Handle the selected file
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+      });
+      `
+      break;
   }
   clipboard.writeText(content);
 });
