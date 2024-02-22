@@ -143,6 +143,17 @@ ipcMain.handle('quick-copy-select', async (req, data) => {
       const clipboardText = clipboard.readText();
       `
       break;
+
+    case 'GlobalShortcut':
+      content =
+      `
+      const { globalShortcut } = require('electron');
+
+      globalShortcut.register('CommandOrControl+X', () => {
+          console.log('Shortcut detected');
+    });
+      `
+      break;
   }
   clipboard.writeText(content);
 });
