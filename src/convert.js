@@ -12,6 +12,7 @@ const tryCatchButton_el = document.getElementById('tryCatchButton');
 const promiseButton_el = document.getElementById('promiseButton');
 const fileFolderButton_el = document.getElementById('fileFolderButton');
 const clipboardButton_el = document.getElementById('clipboardButton');
+const asyncCheckbox_el = document.getElementById('asyncCheckbox');
 
 const requireDataCheckbox_el = document.getElementById('requireDataCheckbox');
 const ipcNameInput_el = document.getElementById('ipcNameInput');
@@ -133,7 +134,7 @@ copyPreloadLineButton_el.addEventListener('click', async () => {
 })
 
 copyIpcMainButton_el.addEventListener('click', async () => {
-    await api.ipcQuickCopySelect({request: 'ipcMain', needData: requireDataCheckbox_el.checked, ipcName: ipcNameInput_el.value});
+    await api.ipcQuickCopySelect({request: 'ipcMain', needData: requireDataCheckbox_el.checked, ipcName: ipcNameInput_el.value, async: asyncCheckbox_el.checked});
     confirmButtonClick(copyIpcMainButton_el);
 })
 

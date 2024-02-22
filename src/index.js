@@ -158,7 +158,7 @@ ipcMain.handle('ipc-quick-copy-select', async (req, data) => {
       clipboard.writeText(preloadLine);
       break;
     case "ipcMain":
-      const ipcMainFunction = `ipcMain.handle('${ipcNameHandle}', (${data.needData ? 'req, data' : ''}) => {\n\n});`;
+      const ipcMainFunction = `ipcMain.handle('${ipcNameHandle}', ${data.async ? 'async' : ''}(${data.needData ? 'req, data' : ''}) => {\n\n});`;
       clipboard.writeText(ipcMainFunction);
       break;
   }
