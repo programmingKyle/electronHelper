@@ -39,7 +39,7 @@ pasteConvert_el.addEventListener('click', async () => {
 
 
 function idToVariables(input){
-    variableList.length = 0;
+    //variableList.length = 0;
     output_el.innerHTML = '';
     const htmlLines = input.split('\n');
     const htmlTrimmed = htmlLines.map(line => line.trim());
@@ -48,7 +48,9 @@ function idToVariables(input){
             const lineSegments = line.split(' ');
             const variableName = grabVariableName(lineSegments);
             const variableElement = convertToVariable(variableName);
-            variableList.push(variableElement);
+            if (!variableList.includes(variableElement)){
+                variableList.push(variableElement);
+            }
             const variableDiv_el = document.createElement('div');
             variableDiv_el.className = 'variable-div-grid';
             variableDiv_el.addEventListener('mouseover', () => {
