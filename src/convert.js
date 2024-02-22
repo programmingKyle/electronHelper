@@ -41,8 +41,6 @@ pasteConvert_el.addEventListener('click', async () => {
 
 
 function idToVariables(input){
-    //variableList.length = 0;
-    //output_el.innerHTML = '';
     const htmlLines = input.split('\n');
     const htmlTrimmed = htmlLines.map(line => line.trim());
     for (const line of htmlTrimmed){
@@ -100,7 +98,7 @@ async function confirmButtonClick(button) {
         button.disabled = false;
         button.textContent = buttonString; // Replace with your original text
         button.classList = '';
-    }, 1500);
+    }, 1000);
 }
 
 function convertToVariable(variableName){
