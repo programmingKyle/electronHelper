@@ -19,6 +19,7 @@ const ipcNameInput_el = document.getElementById('ipcNameInput');
 const copyPreloadLineButton_el = document.getElementById('copyPreloadLineButton');
 const copyIpcMainButton_el = document.getElementById('copyIpcMainButton');
 
+const clearButton_el = document.getElementById('clearButton');
 
 let variableList = [];
 
@@ -40,7 +41,7 @@ pasteConvert_el.addEventListener('click', async () => {
 
 function idToVariables(input){
     //variableList.length = 0;
-    output_el.innerHTML = '';
+    //output_el.innerHTML = '';
     const htmlLines = input.split('\n');
     const htmlTrimmed = htmlLines.map(line => line.trim());
     for (const line of htmlTrimmed){
@@ -163,4 +164,9 @@ fileFolderButton_el.addEventListener('click', async () => {
 clipboardButton_el.addEventListener('click', async () => {
     await api.quickCopySelect('Clipboard');
     confirmButtonClick(clipboardButton_el);
+});
+
+clearButton_el.addEventListener('click', () => {
+    variableList.length = 0;
+    output_el.innerHTML = '';
 });
