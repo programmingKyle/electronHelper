@@ -106,12 +106,9 @@ function grabVariableName(lineSegments) {
     for (const segment of lineSegments) {
         if (segment.includes('id=') || segment.includes('id =')) {
             const name = segment.split('"')[1];
-            console.log(name);
             return name;
         }
     }
-
-    console.log("No variable ID found");
     return null; // Or whatever makes sense in your case when no ID is found
 }
 
@@ -131,8 +128,6 @@ preloadButton_el.addEventListener('click', async () => {
 })
 
 copyPreloadLineButton_el.addEventListener('click', async () => {
-    console.log(requireDataCheckbox_el.value);
-    console.log(requireDataCheckbox_el.checked);
     await api.ipcQuickCopySelect({request: 'preload', needData: requireDataCheckbox_el.checked, ipcName: ipcNameInput_el.value});
     confirmButtonClick(copyPreloadLineButton_el);
 })

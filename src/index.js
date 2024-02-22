@@ -53,29 +53,31 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 ipcMain.handle('callback-copy-handler', (req, data) => {
-  console.log(data);
   if (!data || !data.request) return;
   let content;
 
   const ipcNameSplit = data.name.split(/(?=[A-Z])/);
   const ipcNameHandle = ipcNameSplit.join('-').toLowerCase();
 
-  console.log(data.request);
-
   switch (data.request){
     case 'send':
       content = `mainWindow.webContents.send('${ipcNameHandle}', 'Message');`
       break;
+
     case 'preload':
       content = 
-      `
-      onServerStatusUpdate: (callback) => {
+      `${data.name}: (callback) => {
         ipcRenderer.on('${ipcNameHandle}', (_, status) => {
             callback(status);
         });
     },`;
       break;
+
     case 'view':
+      content = 
+      `api.${data.name}((status) => {
+        console.log(status);
+    });`
       break;
   }
 
@@ -90,7 +92,6 @@ ipcMain.handle('paste-from-clipboard', async (event) => {
   const text = clipboard.readText();
   return text;
 });
-
 
 ipcMain.handle('quick-copy-select', async (req, data) => {
   if (!data) return;
