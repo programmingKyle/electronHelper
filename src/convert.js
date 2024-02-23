@@ -26,8 +26,6 @@ let variableList = [];
 
 convertButton_el.addEventListener('click', () => {
     if (htmlText_el.value === '') return;
-    variableList.length = 0;
-    output_el.innerHTML = '';
     idToVariables(htmlText_el.value);
     confirmButtonClick(convertButton_el);
 });
@@ -50,34 +48,34 @@ function idToVariables(input){
             const variableElement = convertToVariable(variableName);
             if (!variableList.includes(variableElement)){
                 variableList.push(variableElement);
-            }
-            const variableDiv_el = document.createElement('div');
-            variableDiv_el.className = 'variable-div-grid';
-            variableDiv_el.addEventListener('mouseover', () => {
-                variableAddEventListenerButton_el.style.display = 'inline-block';
-            });
-            variableDiv_el.addEventListener('mouseout', () => {
+                const variableDiv_el = document.createElement('div');
+                variableDiv_el.className = 'variable-div-grid';
+                variableDiv_el.addEventListener('mouseover', () => {
+                    variableAddEventListenerButton_el.style.display = 'inline-block';
+                });
+                variableDiv_el.addEventListener('mouseout', () => {
+                    variableAddEventListenerButton_el.style.display = 'none';
+                })
+                
+                const variableButton_el = document.createElement('button');
+                variableDiv_el.append(variableButton_el);
+                variableButton_el.textContent = variableName;
+                variableButton_el.addEventListener('click', () => {
+                    api.copyToClipboard(variableElement);
+                    confirmButtonClick(variableButton_el);
+                })
+    
+                const variableAddEventListenerButton_el = document.createElement('button');
                 variableAddEventListenerButton_el.style.display = 'none';
-            })
-            
-            const variableButton_el = document.createElement('button');
-            variableDiv_el.append(variableButton_el);
-            variableButton_el.textContent = variableName;
-            variableButton_el.addEventListener('click', () => {
-                api.copyToClipboard(variableElement);
-                confirmButtonClick(variableButton_el);
-            })
-
-            const variableAddEventListenerButton_el = document.createElement('button');
-            variableAddEventListenerButton_el.style.display = 'none';
-            variableAddEventListenerButton_el.style.fontSize = '12px';
-            variableAddEventListenerButton_el.textContent = 'EventListener';
-            variableAddEventListenerButton_el.addEventListener('click', async () => {
-                await api.variableCopySelect({request: 'AddEventListener', variableName: `${variableName}_el`});
-                confirmButtonClick(variableAddEventListenerButton_el);
-            })
-            variableDiv_el.append(variableAddEventListenerButton_el);
-            output_el.append(variableDiv_el);
+                variableAddEventListenerButton_el.style.fontSize = '12px';
+                variableAddEventListenerButton_el.textContent = 'EventListener';
+                variableAddEventListenerButton_el.addEventListener('click', async () => {
+                    await api.variableCopySelect({request: 'AddEventListener', variableName: `${variableName}_el`});
+                    confirmButtonClick(variableAddEventListenerButton_el);
+                });
+                variableDiv_el.append(variableAddEventListenerButton_el);
+                output_el.append(variableDiv_el);
+            }
         }
     }
 }
