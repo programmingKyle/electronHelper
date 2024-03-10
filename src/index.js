@@ -195,7 +195,22 @@ store.set('exampleKey', 'exampleValue');
 const storedValue = store.get('exampleKey');
 console.log('Stored Value:', storedValue);
 `;
-    break;
+      break;
+
+    case 'notification':
+      content =  `const { app, Notification } = require('electron');
+
+if (Notification.isSupported()) {
+  const notification = new Notification({
+    title: 'My App Notification',
+    body: 'Hello, this is a notification!',
+  });
+
+  notification.show();
+} else {
+  console.error('Notifications are not supported on this platform.');
+}`
+      break;
   }
   clipboard.writeText(content);
 });
