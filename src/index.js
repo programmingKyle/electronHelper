@@ -155,25 +155,33 @@ ipcMain.handle('quick-copy-select', async (req, data) => {
       `
       break;
     
-      case 'exec':
-        content = `
-          const { exec } = require('child_process');
-          
-          exec('ls', (error, stdout, stderr) => {
-            if (error) {
-              console.error(\`Error executing command: \${error.message}\`);
-              return;
-            }
-      
-            if (stderr) {
-              console.error(\`Command stderr: \${stderr}\`);
-              return;
-            }
-      
-            console.log(\`Command output:\\n\${stdout}\`);
-          });
-        `;
-        break;
+    case 'exec':
+      content = `const { exec } = require('child_process');
+        
+        exec('ls', (error, stdout, stderr) => {
+          if (error) {
+            console.error(\`Error executing command: \${error.message}\`);
+            return;
+          }
+    
+          if (stderr) {
+            console.error(\`Command stderr: \${stderr}\`);
+            return;
+          }
+    
+          console.log(\`Command output:\\n\${stdout}\`);
+        });
+      `;
+      break;
+
+    case 'frontHotkey':
+      content = `document.addEventListener('keydown', (event) => {
+        // Can also use keypress, keyup
+        if (event.key === 's') {
+          console.log('S pressed');
+        }
+    });
+    `
   }
   clipboard.writeText(content);
 });

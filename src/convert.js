@@ -15,6 +15,7 @@ const clipboardButton_el = document.getElementById('clipboardButton');
 const asyncCheckbox_el = document.getElementById('asyncCheckbox');
 const globalShortcut_el = document.getElementById('globalShortcut');
 const execShortcut_el = document.getElementById('execShortcut');
+const frontHotkey_el = document.getElementById('frontHotkey');
 
 const requireDataCheckbox_el = document.getElementById('requireDataCheckbox');
 const ipcNameInput_el = document.getElementById('ipcNameInput');
@@ -172,6 +173,11 @@ globalShortcut_el.addEventListener('click', async () => {
 execShortcut_el.addEventListener('click', async () => {
     await api.quickCopySelect('exec');
     confirmButtonClick(execShortcut_el);
+});
+
+frontHotkey_el.addEventListener('click', async () => {
+    await api.quickCopySelect('frontHotkey');
+    confirmButtonClick(frontHotkey_el);
 });
 
 clearButton_el.addEventListener('click', () => {
