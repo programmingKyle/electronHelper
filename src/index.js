@@ -182,6 +182,20 @@ ipcMain.handle('quick-copy-select', async (req, data) => {
         }
     });
     `
+      break;
+
+    case 'electronStore':
+      content = `const Store = require('electron-store');\n
+const store = new Store();
+
+// Set a value
+store.set('exampleKey', 'exampleValue');
+
+// Get a value
+const storedValue = store.get('exampleKey');
+console.log('Stored Value:', storedValue);
+`;
+    break;
   }
   clipboard.writeText(content);
 });

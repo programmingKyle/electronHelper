@@ -16,6 +16,7 @@ const asyncCheckbox_el = document.getElementById('asyncCheckbox');
 const globalShortcut_el = document.getElementById('globalShortcut');
 const execShortcut_el = document.getElementById('execShortcut');
 const frontHotkey_el = document.getElementById('frontHotkey');
+const electronStore_el = document.getElementById('electronStore');
 
 const requireDataCheckbox_el = document.getElementById('requireDataCheckbox');
 const ipcNameInput_el = document.getElementById('ipcNameInput');
@@ -178,6 +179,11 @@ execShortcut_el.addEventListener('click', async () => {
 frontHotkey_el.addEventListener('click', async () => {
     await api.quickCopySelect('frontHotkey');
     confirmButtonClick(frontHotkey_el);
+});
+
+electronStore_el.addEventListener('click', async () => {
+    await api.quickCopySelect('electronStore');
+    confirmButtonClick(electronStore_el);
 });
 
 clearButton_el.addEventListener('click', () => {
