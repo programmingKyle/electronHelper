@@ -211,6 +211,31 @@ if (Notification.isSupported()) {
   console.error('Notifications are not supported on this platform.');
 }`
       break;
+    
+    case 'tray':
+      content = `const { app, Menu, Tray } = require('electron');
+
+let tray = null;
+
+app.whenReady().then(() => {
+  tray = new Tray('path/to/tray/icon.png');
+
+  const contextMenu = Menu.buildFromTemplate([
+    { label: 'Item 1', type: 'normal' },
+    { label: 'Item 2', type: 'normal' },
+    { label: 'Quit', type: 'normal', click: () => app.quit() },
+  ]);
+
+  tray.setToolTip('Your App Name');
+  tray.setContextMenu(contextMenu);
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});`
+      break;
   }
   clipboard.writeText(content);
 });
