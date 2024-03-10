@@ -14,6 +14,7 @@ const fileFolderButton_el = document.getElementById('fileFolderButton');
 const clipboardButton_el = document.getElementById('clipboardButton');
 const asyncCheckbox_el = document.getElementById('asyncCheckbox');
 const globalShortcut_el = document.getElementById('globalShortcut');
+const execShortcut_el = document.getElementById('execShortcut');
 
 const requireDataCheckbox_el = document.getElementById('requireDataCheckbox');
 const ipcNameInput_el = document.getElementById('ipcNameInput');
@@ -166,6 +167,11 @@ clipboardButton_el.addEventListener('click', async () => {
 globalShortcut_el.addEventListener('click', async () => {
     await api.quickCopySelect('GlobalShortcut');
     confirmButtonClick(globalShortcut_el);
+});
+
+execShortcut_el.addEventListener('click', async () => {
+    await api.quickCopySelect('exec');
+    confirmButtonClick(execShortcut_el);
 });
 
 clearButton_el.addEventListener('click', () => {
